@@ -1,7 +1,9 @@
 import java.lang.Math;
 import java.awt.Color;
+import java.lang.Exception;
 
-public class Cell {
+
+ class Cell {
   private int number;
   private Color color;
   private int xLoc;
@@ -19,7 +21,12 @@ public class Cell {
     }
     xLoc = rand();
     yLoc = rand();
-    System.out.println(xLoc);
+  }
+
+  public static void main(String[] args) throws Exception {
+      Cell cell1 = new Cell();
+      Cell cell2 = new Cell();
+      Cell cell3 = merge(cell1, cell2);
   }
 
   private Cell(Cell a, Cell b) {
@@ -31,10 +38,9 @@ public class Cell {
     }
   }
  
-  public Cell merge(Cell a, Cell b) {
+  public static Cell merge(Cell a, Cell b) throws Exception {
     if (a.getNumber() != b.getNumber()) {
-      System.out.println();
-      return null;
+        throw new Exception("Merge attempt failed, Cells are not equal: " +  a.getNumber() + " != " + b.getNumber());
     } else {
       return new Cell(a, b);
     }
