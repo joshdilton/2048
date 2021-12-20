@@ -24,7 +24,7 @@ public class Cell {
     yLoc = rand();
   }
   
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     Grid grid = new Grid();
     grid.draw();
   }
@@ -38,9 +38,9 @@ public class Cell {
     }
   }
   
-  public static Cell merge(Cell a, Cell b) throws Exception {
+  public static Cell merge(Cell a, Cell b) throws IllegalArgumentException {
     if (a.getNumber() != b.getNumber()) {
-      throw new Exception("Merge attempt failed, Cells are not equal: " +  a.getNumber() + " != " + b.getNumber());
+      throw new IllegalArgumentException("Merge attempt failed, Cells are not equal: " +  a.getNumber() + " != " + b.getNumber());
     } else {
       return new Cell(a, b);
     }
