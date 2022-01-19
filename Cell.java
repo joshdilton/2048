@@ -13,21 +13,32 @@ public class Cell {
     new Color(244,164,96), new Color(210,105,30), new Color(250,128,114),
     new Color(178,34,34), Color.YELLOW};
   
-  public Cell() {
+  public Cell(Grid grid) {
     number  = 2 * ((int) (Math.random() * 2) + 1);
     if (number > 128) {
       color = Color.YELLOW;
     } else {
       color = COLORS[(int) ((Math.log10(number)) / Math.log10(2) - 1)];
     }
-    xLoc = rand();
-    yLoc = rand();
+    while(true) {
+      xLoc = rand();
+      yLoc = rand();
+      if (grid.getCell(xLoc, yLoc) == null) {
+        break;
+      }
+    }
+  }
+
+  public boolean equals(Cell cell) {
+    if (xLoc != cell.getX()) {
+      return false;
+    }
+    if (yLoc != cell.getY()) {
+      return false;
+    }
+    return true;
   }
   
-  public static void main(String[] args) throws Exception {
-    Grid grid = new Grid();
-    grid.draw();
-  }
   
   private Cell(Cell a, Cell b) {
     number = a.getNumber() + b.getNumber();

@@ -5,10 +5,22 @@ public class Grid {
     private static Font font = new Font("SANS_SERIF" , Font.PLAIN, 20);
 
     public Grid() {
-        Cell cell1 = new Cell();
-        Cell cell2 = new Cell();
+        Cell cell1 = new Cell(this);
+        Cell cell2 = new Cell(this);
         cells[cell1.getX()][cell1.getY()] = cell1;
         cells[cell2.getX()][cell2.getY()] = cell2;
+    }
+
+    public Cell[][] getCells() {
+        return cells;
+    }
+
+    public Cell getCell(int x, int y) {
+        return cells[x][y];
+    }
+
+    public boolean gameIsOver() {
+        return false;
     }
 
     public void draw() {
@@ -30,6 +42,28 @@ public class Grid {
                 StdDraw.square(i + .5, j + .5, .5);
             }
         }
+    }
+    
+    public boolean shift(String input) {
+        /*
+        if(input.equals("s")) {
+            return shiftDown();
+        }
+        if(input.equals("w")) {
+            return shiftUp();
+        }
+        if(input.equals("a")) {
+            return shiftLeft();
+        }
+        */
+        if(input.equals("d")) {
+            return shiftRight();
+        }
+        return false;
+    }
+
+    private boolean shiftRight() {
+        return true;
     }
 
   }
