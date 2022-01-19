@@ -1,6 +1,5 @@
 import java.lang.Math;
 import java.awt.Color;
-import java.lang.Exception;
 
 
 public class Cell {
@@ -38,7 +37,10 @@ public class Cell {
     }
     return true;
   }
-  
+  public static void main(String[] args) {
+    Grid grid = new Grid();
+    grid.draw();
+  }
   
   private Cell(Cell a, Cell b) {
     number = a.getNumber() + b.getNumber();
@@ -49,9 +51,9 @@ public class Cell {
     }
   }
   
-  public static Cell merge(Cell a, Cell b) throws Exception {
+  public static Cell merge(Cell a, Cell b) throws IllegalArgumentException {
     if (a.getNumber() != b.getNumber()) {
-      throw new Exception("Merge attempt failed, Cells are not equal: " +  a.getNumber() + " != " + b.getNumber());
+      throw new IllegalArgumentException("Merge attempt failed, Cells are not equal: " +  a.getNumber() + " != " + b.getNumber());
     } else {
       return new Cell(a, b);
     }
